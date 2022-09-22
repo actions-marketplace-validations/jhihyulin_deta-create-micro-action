@@ -2,8 +2,8 @@
 Simple GitHub Action to create new micro
 
 ```yaml
-- name: Change visor set on Deta
-  uses: jhihyulin/deta-change-visor-action@v1.0.0
+- name: Create micro on deta
+  uses: jhihyulin/deta-create-micro-action@v1.0.0
   with:
     deta-access-token: '' #Deta access token https://docs.deta.sh/docs/cli/auth
     deta-name: '' #Deta Micro name https://docs.deta.sh/docs/cli/commands/#deta-clone
