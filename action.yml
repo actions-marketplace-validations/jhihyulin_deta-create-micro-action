@@ -1,4 +1,4 @@
-name: "Create micro on Deta"
+name: "Create a micro on Deta"
 description: "Simple GitHub Action to create new micro"
 
 inputs:
