@@ -1,0 +1,43 @@
+name: "Create micro on Deta"
+description: "Simple GitHub Action to create new micro"
+
+inputs:
+  deta-access-token:
+    description: "Deta access token"
+    required: true
+  deta-name:
+    description: "Deta micro name"
+    required: true
+  deta-project:
+    description: "Deta project name"
+    default: "default"
+  deta-project-dir:
+    description: "Directory of the project"
+    default: "."
+  deta-python-version:
+    description: "micro run python version"
+    defauult: "python3.9"
+
+runs:
+  using: "composite"
+  steps:
+    # Install Deta CLI as per docs
+    # https://docs.deta.sh/docs/cli/install
+    - name: Install Deta CLI
+      shell: bash
+      run: |
+        curl -fsSL https://get.deta.dev/cli.sh | sh
+
+    # Using the access token and existing Deta micro and project,
+    # clone the micro and copy .deta metadata folder to use it in deploy
+    # https://docs.deta.sh/docs/cli/commands#deta-clone
+    - name: Create deta micro
+      shell: bash
+      run: |
+        export DETA_ACCESS_TOKEN=${{ inputs.deta-access-token }}
+        ~/.deta/bin/deta new --runtime ${{ inputs.deta-python-version }} --name ${{ inputs.deta-name }} --project ${{ inputs.deta-project }} tmp/
+        cp -r tmp/.deta .
+
+branding:
+  icon: check-circle
+  color: purple
