@@ -35,7 +35,7 @@ runs:
       shell: bash
       run: |
         export DETA_ACCESS_TOKEN=${{ inputs.deta-access-token }}
-        ~/.deta/bin/deta new --runtime ${{ inputs.deta-runtime-version }} --name ${{ inputs.deta-name }} --project ${{ inputs.deta-project }} tmp/
+        ~/.deta/bin/deta new --runtime ${{ inputs.deta-python-version }} --name ${{ inputs.deta-name }} --project ${{ inputs.deta-project }} tmp/
         cp -r tmp/.deta .
 
 branding:
